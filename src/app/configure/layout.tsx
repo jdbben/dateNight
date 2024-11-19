@@ -12,8 +12,8 @@ function layout({
 }: Readonly<{ children: React.ReactNode; session: Session }>) {
   return (
     <SessionProvider session={session}>
-      <MaxWidthWrapper>
-        <NavBar />
+      <NavBar />
+      <MaxWidthWrapper className="flex justify-center items-center h-screen">
         {children}
       </MaxWidthWrapper>
     </SessionProvider>

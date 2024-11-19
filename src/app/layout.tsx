@@ -1,8 +1,8 @@
-"use client";
 import localFont from "next/font/local";
 import MaxWidthWrapper from "./components/MaxWidthWrapper";
 import Theme from "./components/Theme";
 import "./globals.css";
+import { Metadata } from "next";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -15,10 +15,10 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-// export const metadata: Metadata = {
-//   title: "date night",
-//   description: "date time",
-// };
+export const metadata: Metadata = {
+  title: "date night",
+  description: "date time",
+};
 
 export default function RootLayout({
   children,

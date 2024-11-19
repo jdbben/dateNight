@@ -9,11 +9,11 @@ body {
   --background: #ffffff;
   --foreground: #171717;
 }
-/* @layer base {
+@layer base {
   :root {
     --radius: 0.5rem;
   }
-} */
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
