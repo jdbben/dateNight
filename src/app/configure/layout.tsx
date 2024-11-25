@@ -12,7 +12,7 @@ interface LayoutProps {
   session?: Session;
 }
 
-const Layout = ({ children, session }: LayoutProps) => {
+export default function Layout({ children, session }: LayoutProps) {
   return (
     <SessionProvider session={session}>
       <NavBar />
@@ -21,6 +21,4 @@ const Layout = ({ children, session }: LayoutProps) => {
       </MaxWidthWrapper>
     </SessionProvider>
   );
-};
-
-export default Layout;
+}
