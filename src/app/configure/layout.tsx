@@ -7,12 +7,12 @@ import Theme from "../../components/Theme";
 import { ReactNode } from "react";
 import { Session } from "next-auth";
 
-interface LayoutProps {
+interface Props {
   children: Readonly<React.ReactNode>;
   session: Session;
 }
 
-const layout = ({ children, session }: LayoutProps) => {
+const layout = ({ children, session }: Props) => {
   return (
     <SessionProvider session={session}>
       <NavBar />
