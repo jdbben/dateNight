@@ -30,8 +30,5 @@ export const options: NextAuthOptions = {
       userCreate(token, session);
       return session;
     },
-    // async redirect({ url, baseUrl }) {
-    //   return baseUrl + "/configure/gameSetup";
-    // },
   },
 };

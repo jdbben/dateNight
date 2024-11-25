@@ -1,6 +1,7 @@
 import { Session } from "next-auth";
 import prisma from "./prismaClient";
 import { JWT } from "next-auth/jwt";
+import { seed } from "../prisma/seed";
 
 export const userCreate = async (token: JWT, session: Session) => {
   try {
@@ -9,6 +10,7 @@ export const userCreate = async (token: JWT, session: Session) => {
       where: { providerId: id },
     });
     if (findIfUserexist === null || undefined) {
+      seed();
       if (session.user) {
         await prisma.user.create({
           data: {
