@@ -1,8 +1,8 @@
 "use client";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
-import { text } from "../app/lib/const";
-import { cn } from "../app/lib/utils";
+import { text } from "@/app/lib/const";
+import { cn } from "../lib/utils";
 import Botton from "./Botton";
 
 const Discreption = () => {

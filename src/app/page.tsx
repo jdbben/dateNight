@@ -1,7 +1,7 @@
+import Discreption from "@/components/Discreption";
 import { seed } from "../../prisma/seed";
-import Box from "../components/Box";
-import Discreption from "../components/Discreption";
-import ParticlesBackground from "../components/ParticlesBackground";
+import Box from "@/components/Box";
+import ParticlesBackground from "@/components/ParticlesBackground";
 
 const page = () => {
   return (
