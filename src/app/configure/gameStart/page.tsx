@@ -35,7 +35,7 @@ const page = () => {
             className="pl-4 pr-4 absolute "
             onClick={async () => getthequation(session.user?.email as string)}
           >
-            New quetions
+            New quetion
           </Button>
         </div>
       </div>

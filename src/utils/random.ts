@@ -9,7 +9,7 @@ export const randomNums = async (relationtype: string, target: string) => {
   const tableCountS = await prisma.forSameHouse.count();
 
   if (
-    (relationtype === "distence" && existingQuetions.length === 0) ||
+    (relationtype === "distance" && existingQuetions.length === 0) ||
     existingQuetions.length != tableCountD
   ) {
     const ids: { id: number }[] = await prisma.fordistence.findMany({

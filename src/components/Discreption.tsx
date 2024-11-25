@@ -14,12 +14,6 @@ const Discreption = () => {
 
     setLoading(false);
   };
-  //   <button type="button" class="bg-indigo-500 ..." disabled>
-  //   <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
-  //     <!-- ... -->
-  //   </svg>
-  //   Processing...
-  // </button>
 
   return (
     <div className="flex flex-col lg:gap-2 lg:h-screen items-center justify-center gap-4 pt-[15vh] pb-[5vh] lg:pb-[40%] ">
