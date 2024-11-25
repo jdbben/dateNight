@@ -5,12 +5,9 @@ import NavBar from "../../components/NavBar";
 import Theme from "../../components/Theme";
 import { ReactNode } from "react";
 
-export default async function Layout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
-  const session = await getSession();
+export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <SessionProvider session={session}>
+    <SessionProvider>
       <NavBar />
       <MaxWidthWrapper className="flex justify-center items-center h-screen">
         {children}
