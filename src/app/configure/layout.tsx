@@ -1,18 +1,14 @@
-"use client";
-import { SessionProvider } from "next-auth/react";
+import { getSession, SessionProvider } from "next-auth/react";
 
 import MaxWidthWrapper from "../../components/MaxWidthWrapper";
-import { Session } from "next-auth";
 import NavBar from "../../components/NavBar";
 import Theme from "../../components/Theme";
 import { ReactNode } from "react";
 
-interface LayoutProps {
-  children: ReactNode;
-  session?: Session;
-}
-
-export default function Layout({ children, session }: LayoutProps) {
+export default async function Layout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  const session = await getSession();
   return (
     <SessionProvider session={session}>
       <NavBar />
