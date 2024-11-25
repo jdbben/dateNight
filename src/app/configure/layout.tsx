@@ -1,20 +1,12 @@
 "use client";
-import { getSession, SessionProvider } from "next-auth/react";
+import { SessionProvider } from "next-auth/react";
 
 import MaxWidthWrapper from "../../components/MaxWidthWrapper";
 import NavBar from "../../components/NavBar";
-import Theme from "../../components/Theme";
-import { ReactNode } from "react";
-import { Session } from "next-auth";
 
-interface Props {
-  children: Readonly<React.ReactNode>;
-  session: Session;
-}
-
-const layout = ({ children, session }: Props) => {
+const layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
-    <SessionProvider session={session}>
+    <SessionProvider>
       <NavBar />
       <MaxWidthWrapper className="flex justify-center items-center h-screen">
         {children}
