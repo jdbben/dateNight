@@ -1,10 +1,10 @@
 "use client";
 import { SessionProvider } from "next-auth/react";
 
-import MaxWidthWrapper from "../components/MaxWidthWrapper";
+import MaxWidthWrapper from "../../components/MaxWidthWrapper";
 import { Session } from "next-auth";
-import NavBar from "../components/NavBar";
-import Theme from "../components/Theme";
+import NavBar from "../../components/NavBar";
+import Theme from "../../components/Theme";
 
 function layout({
   children,

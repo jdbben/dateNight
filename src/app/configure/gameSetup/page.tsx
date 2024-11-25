@@ -10,46 +10,66 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useEffect, useState } from "react";
+import { sendDataToApi } from "@/services/api";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const page = () => {
   const [relationshiptype, setRelationShipType] = useState("");
   const [questionType, setQuestionType] = useState("");
-  useEffect(() => {
-    console.log(relationshiptype);
-  }, [relationshiptype]);
-  return (
-    <div
-      className="h-fit w-fit p-11 rounded-lg border-2 dark:border-white
-     border-black"
-    >
-      <div className="grid">
-        <Select onValueChange={setRelationShipType}>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="relationship type" />
-          </SelectTrigger>
-          <SelectGroup>
-            <SelectContent>
-              <SelectLabel>type</SelectLabel>
-              <SelectItem value="distence">distence</SelectItem>
-              <SelectItem value="same place">same place</SelectItem>
-            </SelectContent>
-          </SelectGroup>
-        </Select>
-        <Select onValueChange={setQuestionType}>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Question type" />
-          </SelectTrigger>
-          <SelectGroup>
-            <SelectContent>
-              <SelectItem value="hot">Hot</SelectItem>
-              <SelectItem value="cajole">cajole</SelectItem>
-              <SelectItem value="introdusing">to Know each others</SelectItem>
-            </SelectContent>
-          </SelectGroup>
-        </Select>
-        <Button>Next</Button>
+  const router = useRouter();
+
+  const { data: session, status } = useSession();
+  const func = async () => {
+    sendDataToApi(relationshiptype, session?.user?.email as string);
+    router.push("/configure/gameStart");
+  };
+
+  if (status === "authenticated") {
+    return (
+      <div
+        className="h-fit w-fit p-11 rounded-lg border-2 dark:border-white
+       border-black"
+      >
+        <div className="grid">
+          <Select onValueChange={setRelationShipType}>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="relationship type" />
+            </SelectTrigger>
+            <SelectGroup>
+              <SelectContent>
+                <SelectLabel>type</SelectLabel>
+                <SelectItem value="distence">distence</SelectItem>
+                <SelectItem value="same place">same place</SelectItem>
+              </SelectContent>
+            </SelectGroup>
+          </Select>
+          <Select onValueChange={setQuestionType}>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Question type" />
+            </SelectTrigger>
+            <SelectGroup>
+              <SelectContent>
+                <SelectItem value="hot">Hot</SelectItem>
+                <SelectItem value="cajole">cajole</SelectItem>
+                <SelectItem value="introdusing">to Know each others</SelectItem>
+              </SelectContent>
+            </SelectGroup>
+          </Select>
+          <Button onClick={func}>Next</Button>
+        </div>
       </div>
+    );
+  } else {
+    <SignBox />;
+  }
+};
+
+const SignBox = () => {
+  return (
+    <div>
+      <p>you need to login Signe up to able to continue</p>
     </div>
   );
 };

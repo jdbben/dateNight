@@ -1,4 +1,4 @@
-import { text } from "../lib/const";
+import { text } from "../app/lib/const";
 import TypeEffect from "./TypeEffect";
 
 const Box = () => {

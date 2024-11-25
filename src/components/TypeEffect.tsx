@@ -6,7 +6,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { useIntersection } from "../Hook/IntersectionHoock";
+import { useIntersection } from "../app/Hook/IntersectionHoock";
 const TypeEffect = ({
   classname,
   text,

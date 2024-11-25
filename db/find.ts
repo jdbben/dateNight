@@ -1,27 +1,26 @@
-// import { Session } from "next-auth";
-// import prisma from "./prismaClient"
-// import { JWT } from "next-auth/jwt";
+import { Session } from "next-auth";
+import prisma from "./prismaClient";
+import { JWT } from "next-auth/jwt";
 
-// export const userCreate = async (token: JWT, session: Session) => {
-//     try {
-//       const target = token.sub;
-
-//       if (typeof target === "string") {
-//         const findeduser = await prisma.user.findUnique({
-//           where: { gitHubId: target },
-//         });
-//         if (findeduser === null || undefined) {
-//           if (typeof session.user?.name === "string") {
-//             const createuser = await prisma.user.create({
-//               data: {
-//                 gitHubId: target,
-//                 name: session.user?.name,
-//               },
-//             });
-//           }
-//         }
-//       }
-//     } catch (err) {
-//       console.log("err creating the user", err);
-//     }
-//   };
+export const userCreate = async (token: JWT, session: Session) => {
+  try {
+    const id = token.sub as string;
+    const findIfUserexist = await prisma.user.findUnique({
+      where: { providerId: id },
+    });
+    if (findIfUserexist === null || undefined) {
+      if (session.user) {
+        await prisma.user.create({
+          data: {
+            name: session.user.name as string,
+            email: session.user.email as string,
+            profilePic: session.user.image,
+            providerId: id,
+          },
+        });
+      }
+    }
+  } catch (err) {
+    throw new Error("error creating the user " + err);
+  }
+};

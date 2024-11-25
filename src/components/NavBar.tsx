@@ -1,9 +1,11 @@
 "use client";
 
-import { useSession } from "next-auth/react";
+import { Button } from "@/components/ui/button";
+import { signOut, useSession } from "next-auth/react";
 
 const NavBar = () => {
   const { data: session, status } = useSession();
+
   if (status === "authenticated") {
     return (
       <div className="h-[10vh] w-full left-0  flex items-center pl-2 pr-2 rounded-b-xl justify-around ">
@@ -18,6 +20,17 @@ const NavBar = () => {
               />
               <p>{session.user.name}</p>
             </div>
+            <Button
+              className="pl-4 pr-4"
+              onClick={() =>
+                signOut({
+                  redirect: true,
+                  callbackUrl: "http://localhost:3000",
+                })
+              }
+            >
+              Signout
+            </Button>
           </>
         ) : null}
       </div>

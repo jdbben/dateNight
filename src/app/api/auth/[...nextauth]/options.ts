@@ -1,6 +1,7 @@
 import { NextAuthOptions } from "next-auth";
 import FacebookProvider from "next-auth/providers/facebook";
 import GoogleProvider from "next-auth/providers/google";
+import { userCreate } from "../../../../../db/find";
 export const options: NextAuthOptions = {
   session: { strategy: "jwt" },
   providers: [
@@ -26,10 +27,11 @@ export const options: NextAuthOptions = {
       return token;
     },
     async session({ session, token, user }) {
+      userCreate(token, session);
       return session;
     },
-    async redirect({ url, baseUrl }) {
-      return baseUrl + "/configure/gameSetup";
-    },
+    // async redirect({ url, baseUrl }) {
+    //   return baseUrl + "/configure/gameSetup";
+    // },
   },
 };

@@ -7,12 +7,7 @@ type Prop = {
 };
 
 const Theme = ({ className }: Prop) => {
-  const [d, setD] = useState<string>(() => {
-    return typeof window !== "undefined" &&
-      localStorage.getItem("theme") === "dark"
-      ? day.night
-      : day.sun;
-  });
+  const [d, setD] = useState<string | null>(null);
   useEffect(() => {
     const theme = localStorage.getItem("theme");
     if (theme === "dark") {

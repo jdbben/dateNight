@@ -1,6 +1,6 @@
 import localFont from "next/font/local";
-import MaxWidthWrapper from "./components/MaxWidthWrapper";
-import Theme from "./components/Theme";
+import MaxWidthWrapper from "../components/MaxWidthWrapper";
+import Theme from "../components/Theme";
 import "./globals.css";
 import { Metadata } from "next";
 
@@ -30,7 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-gray-900 text-black dark:text-white`}
       >
-        <Theme />
+        {/* <Theme /> */}
         <MaxWidthWrapper>{children}</MaxWidthWrapper>
       </body>
     </html>
