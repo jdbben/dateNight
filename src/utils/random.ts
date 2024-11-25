@@ -1,50 +1,42 @@
 import prisma from "../../db/prismaClient";
-export const randomNums = async (relationtype: string, target: string) => {
-  const existingQuetions = await prisma.user.findMany({
-    select: {
-      prevQuestions: true,
-    },
-  });
-  const tableCountD = await prisma.fordistence.count();
-  const tableCountS = await prisma.forSameHouse.count();
 
-  if (
-    (relationtype === "distance" && existingQuetions.length === 0) ||
-    existingQuetions.length != tableCountD
-  ) {
-    const ids: { id: number }[] = await prisma.fordistence.findMany({
-      select: { id: true },
+export const randomNums = async (relationtype: string, target: string) => {
+  try {
+    const user = await prisma.user.findUnique({
+      where: { email: target },
+      select: { prevQuestions: true },
     });
-    try {
-      await prisma.user.update({
-        where: {
-          email: target,
-        },
-        data: {
-          prevQuestions: ids,
-        },
-      });
-    } catch (err) {
-      throw new Error("cant add the prevquestions" + err);
+
+    if (!user) {
+      throw new Error(`User with email ${target} not found`);
     }
-  } else if (
-    (relationtype === "same place" && existingQuetions.length === 0) ||
-    existingQuetions.length != tableCountS
-  ) {
-    try {
-      const ids: { id: number }[] = await prisma.forSameHouse.findMany({
+
+    if (relationtype === "distance" && !user.prevQuestions) {
+      const ids = await prisma.fordistence.findMany({
         select: { id: true },
       });
+
       await prisma.user.update({
-        where: {
-          email: target,
-        },
+        where: { email: target },
         data: {
-          prevQuestions: ids,
+          prevQuestions: ids.map((idObj) => idObj.id),
         },
       });
-    } catch (err) {
-      throw new Error("cant add the prevquestions" + err);
     }
+
+    if (relationtype === "same place" && !user.prevQuestions) {
+      const ids = await prisma.forSameHouse.findMany({
+        select: { id: true },
+      });
+
+      await prisma.user.update({
+        where: { email: target },
+        data: {
+          prevQuestions: ids.map((idObj) => idObj.id),
+        },
+      });
+    }
+  } catch (err) {
+    throw new Error("Error processing randomNums: " + err);
   }
 };
