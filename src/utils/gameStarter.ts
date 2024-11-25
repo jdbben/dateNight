@@ -1,7 +1,6 @@
 import { distanceQuetions, hotQuetions } from "@/app/lib/const";
 import prisma from "../../db/prismaClient";
 export async function getrandomquetion(email: string) {
-  console.log(email, "hehfhheheh");
   const relationshipType = await prisma.user.findUnique({
     where: {
       email: email,
