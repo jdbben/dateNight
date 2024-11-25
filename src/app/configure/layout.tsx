@@ -5,11 +5,14 @@ import MaxWidthWrapper from "../../components/MaxWidthWrapper";
 import { Session } from "next-auth";
 import NavBar from "../../components/NavBar";
 import Theme from "../../components/Theme";
+import { ReactNode } from "react";
 
-function layout({
-  children,
-  session,
-}: Readonly<{ children: React.ReactNode; session: Session }>) {
+interface LayoutProps {
+  children: ReactNode;
+  session?: Session;
+}
+
+const Layout = ({ children, session }: LayoutProps) => {
   return (
     <SessionProvider session={session}>
       <NavBar />
@@ -18,6 +21,6 @@ function layout({
       </MaxWidthWrapper>
     </SessionProvider>
   );
-}
+};
 
-export default layout;
+export default Layout;
