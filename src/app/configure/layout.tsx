@@ -4,11 +4,8 @@ import MaxWidthWrapper from "../../components/MaxWidthWrapper";
 import NavBar from "../../components/NavBar";
 import Theme from "../../components/Theme";
 import { ReactNode } from "react";
-interface LayoutProps {
-  children: ReactNode;
-}
 
-export default function Layout({ children }: LayoutProps) {
+const layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
     <SessionProvider>
       <NavBar />
@@ -17,4 +14,6 @@ export default function Layout({ children }: LayoutProps) {
       </MaxWidthWrapper>
     </SessionProvider>
   );
-}
+};
+
+export default layout;
