@@ -18,7 +18,7 @@ const page = () => {
         const result = await getRAndomQuetionfromApi(
           session.user?.email as string
         );
-        setQuetion(result);
+        setQuetion(result.data);
       } catch (err) {
         throw new Error("cant get the quetion " + err);
       } finally {
@@ -46,7 +46,7 @@ const page = () => {
   } else {
     return (
       <div>
-        <p>login first</p>
+        <Waiting />
       </div>
     );
   }

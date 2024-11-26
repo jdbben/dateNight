@@ -25,7 +25,7 @@ const page = () => {
   if (status === "authenticated") {
     const func = async () => {
       if (session?.user) {
-        sendDataToApi(
+        await sendDataToApi(
           relationshiptype,
           questionType,
           session?.user.email as string
@@ -46,7 +46,7 @@ const page = () => {
             <SelectGroup>
               <SelectContent>
                 <SelectLabel>type</SelectLabel>
-                <SelectItem value="distence">distence</SelectItem>
+                <SelectItem value="distance">distance</SelectItem>
                 <SelectItem value="same place">same place</SelectItem>
               </SelectContent>
             </SelectGroup>
@@ -58,8 +58,8 @@ const page = () => {
             <SelectGroup>
               <SelectContent>
                 <SelectItem value="hot">Hot</SelectItem>
-                <SelectItem value="cajole">cajole</SelectItem>
-                <SelectItem value="introdusing">to Know each others</SelectItem>
+                <SelectItem value="casuale">casuale</SelectItem>
+                <SelectItem value="introdusing">to know each other</SelectItem>
               </SelectContent>
             </SelectGroup>
           </Select>

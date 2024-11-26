@@ -9,7 +9,7 @@ export async function getrandomquetion(email: string) {
       relationType: true,
     },
   });
-  if (relationshipType || relationshipType === "distence") {
+  if (relationshipType || relationshipType === "distance") {
     return distanceQuetions[
       Math.floor(Math.random() * (distanceQuetions.length - 1))
     ];

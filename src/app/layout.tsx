@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Metadata } from "next";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import Theme from "@/components/Theme";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,7 +31,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-gray-900 text-black dark:text-white`}
       >
-        {/* <Theme /> */}
+        <Theme />
         <MaxWidthWrapper>{children}</MaxWidthWrapper>
       </body>
     </html>

@@ -14,8 +14,7 @@ const NavBar = () => {
             <div className="flex items-center gap-2">
               <img
                 src={session.user?.image}
-                className="rounded-full"
-                width={70}
+                className="rounded-full lg:w-[70px] w-[50px]  "
                 alt=""
               />
               <p>{session.user.name}</p>
@@ -25,7 +24,7 @@ const NavBar = () => {
               onClick={() =>
                 signOut({
                   redirect: true,
-                  callbackUrl: process.env.NEXTAUTH_URL,
+                  callbackUrl: "/",
                 })
               }
             >

@@ -4,7 +4,7 @@ export async function sendDataToApi(
   email: string
 ) {
   try {
-    const response = await fetch("/api/addQuationsType", {
+    const response = await fetch("/api/addQuationsType/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
