@@ -22,14 +22,6 @@ model User {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
   prevQuestions Json?
-}
-
-model Fordistence {
-  id       Int    @id @default(autoincrement())
-  question String
-}
-
-model ForSameHouse {
-  id       Int    @id @default(autoincrement())
-  question String
+  relationType  String?
+  quetionsType  String?
 }

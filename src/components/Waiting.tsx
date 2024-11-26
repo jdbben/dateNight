@@ -40,17 +40,17 @@ const Waiting = () => {
     <div className="flex justify-center items-center h-screen mx-auto">
       <div
         ref={ref}
-        className="h-8 w-8 rounded-full bg-black animate-[] absolute "
+        className="h-8 w-8 rounded-full bg-black animate-[] absolute dark:bg-white "
       />
       <div
         ref={ref1}
-        className="h-11 w-11 rounded-full bg-black animate-[] absolute ease-in-out "
+        className="h-11 w-11 rounded-full bg-black animate-[] absolute ease-in-out dark:bg-white "
       />
       <div
         ref={ref2}
-        className="h-4 w-4 rounded-full bg-black animate-[] absolute ease-out "
+        className="h-4 w-4 rounded-full bg-black animate-[] absolute ease-out dark:bg-white "
       />
-      <div className="h-[120px] w-[120px] rounded-full bg-black absolute  ease-in" />
+      <div className="h-[120px] w-[120px] rounded-full bg-black absolute  ease-in dark:bg-white" />
     </div>
   );
 };

@@ -21,12 +21,18 @@ const page = () => {
   const router = useRouter();
 
   const { data: session, status } = useSession();
-  const func = async () => {
-    sendDataToApi(relationshiptype, session?.user?.email as string);
-    router.push("/configure/gameStart");
-  };
 
   if (status === "authenticated") {
+    const func = async () => {
+      if (session?.user) {
+        await sendDataToApi(
+          relationshiptype,
+          questionType,
+          session?.user.email as string
+        );
+        router.push("/configure/gameStart");
+      }
+    };
     return (
       <div
         className="h-fit w-fit p-11 rounded-lg border-2 dark:border-white
@@ -52,8 +58,13 @@ const page = () => {
             <SelectGroup>
               <SelectContent>
                 <SelectItem value="hot">Hot</SelectItem>
+<<<<<<< HEAD
                 <SelectItem value="cajole">Casual</SelectItem>
                 <SelectItem value="introdusing">To know each other</SelectItem>
+=======
+                <SelectItem value="casuale">casuale</SelectItem>
+                <SelectItem value="introdusing">to know each other</SelectItem>
+>>>>>>> dev
               </SelectContent>
             </SelectGroup>
           </Select>
