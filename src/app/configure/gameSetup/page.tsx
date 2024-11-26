@@ -58,13 +58,8 @@ const page = () => {
             <SelectGroup>
               <SelectContent>
                 <SelectItem value="hot">Hot</SelectItem>
-<<<<<<< HEAD
-                <SelectItem value="cajole">Casual</SelectItem>
-                <SelectItem value="introdusing">To know each other</SelectItem>
-=======
                 <SelectItem value="casuale">casuale</SelectItem>
                 <SelectItem value="introdusing">to know each other</SelectItem>
->>>>>>> dev
               </SelectContent>
             </SelectGroup>
           </Select>
