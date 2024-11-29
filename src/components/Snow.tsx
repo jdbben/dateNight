@@ -9,7 +9,6 @@ type Dimensions = {
 
 const Snow = () => {
   const ref = useRef<HTMLCanvasElement>(null);
-
   const [dimensions, setDimensions] = useState<Dimensions>({
     height: 0,
     width: 0,
@@ -42,7 +41,7 @@ const Snow = () => {
       y: number;
       radius: number;
       speedY: number;
-    }[] = Array.from({ length: 300 }, () => ({
+    }[] = Array.from({ length: 100 }, () => ({
       x: Math.random() * dimensions.width,
       y: Math.random() * dimensions.height,
       radius: Math.random() * 3 + 2,
@@ -51,11 +50,12 @@ const Snow = () => {
 
     const draw = () => {
       ctx.clearRect(0, 0, dimensions.width, dimensions.height);
-
       snowflakes.forEach((flake) => {
         ctx.beginPath();
         ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "balck";
+        ctx.fillStyle = getComputedStyle(document.documentElement)
+          .getPropertyValue("--snow-color")
+          .trim();
         ctx.fill();
         flake.y += flake.speedY;
         if (flake.y > dimensions.height) {
@@ -73,7 +73,7 @@ const Snow = () => {
   return (
     <canvas
       ref={ref}
-      className="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1]"
+      className="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] "
       height={dimensions.height}
       width={dimensions.width}
     ></canvas>

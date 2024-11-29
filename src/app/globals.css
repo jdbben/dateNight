@@ -8,11 +8,15 @@ body {
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --snow-color: black;
 }
 @layer base {
   :root {
     --radius: 0.5rem;
   }
+}
+.dark {
+  --snow-color: white;
 }
 
 @media (prefers-color-scheme: dark) {

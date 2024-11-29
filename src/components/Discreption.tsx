@@ -18,7 +18,6 @@ const Discreption = () => {
       setTimeout(() => setLoading(false), 2000);
     }
   };
-  console.log(loading);
   return (
     <div className="flex flex-col lg:gap-2 lg:h-screen items-center justify-center gap-4 pt-[15vh] pb-[5vh] lg:pb-[40%] ">
       <div>
