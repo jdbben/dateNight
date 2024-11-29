@@ -7,14 +7,16 @@ type Botto = {
   Name?: string;
   OnClick?: () => void;
   loading?: boolean;
+  disabled?: boolean;
 };
 
-const Botton = ({
+const Button = ({
   className,
   backgroundcolor,
   Name,
   OnClick,
   loading,
+  disabled,
 }: Botto) => {
   return (
     <button
@@ -23,10 +25,11 @@ const Botton = ({
         className
       )}
       onClick={OnClick}
+      disabled={disabled}
     >
-      {loading ? "Loading ..." : Name || "Click here"}
+      {Name || "Click here"}
     </button>
   );
 };
 
-export default Botton;
+export default Button;

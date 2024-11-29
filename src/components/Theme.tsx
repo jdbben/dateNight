@@ -8,6 +8,7 @@ type Prop = {
 
 const Theme = ({ className }: Prop) => {
   const [d, setD] = useState<string | null>(null);
+
   useEffect(() => {
     const theme = localStorage.getItem("theme");
     if (theme === "dark") {
