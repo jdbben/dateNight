@@ -3,11 +3,22 @@ import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { text } from "@/app/lib/const";
 import { cn } from "../lib/utils";
-import Botton from "./Botton";
+import Button from "./Button";
 
 const Discreption = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
+  const func = () => {
+    setLoading(true);
+
+    try {
+      signIn(undefined, { callbackUrl: "/configure/gameSetup" });
+    } catch (err) {
+    } finally {
+      setTimeout(() => setLoading(false), 2000);
+    }
+  };
+  console.log(loading);
   return (
     <div className="flex flex-col lg:gap-2 lg:h-screen items-center justify-center gap-4 pt-[15vh] pb-[5vh] lg:pb-[40%] ">
       <div>
@@ -22,13 +33,22 @@ const Discreption = () => {
           <p className="text-white"> {text.features}</p>
         </div>
       </div>
-      <Botton
-        Name="Start playing"
-        OnClick={() =>
-          signIn(undefined, { callbackUrl: "/configure/gameSetup" })
-        }
-        loading={loading}
-      />
+      {loading ? (
+        <>
+          <Button
+            Name="Loading..."
+            OnClick={() => {
+              func;
+              return loading;
+            }}
+            disabled={loading}
+          />
+        </>
+      ) : (
+        <>
+          <Button Name="Start playing" OnClick={func} />
+        </>
+      )}
     </div>
   );
 };
