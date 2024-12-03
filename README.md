@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Datenight 🎲❤️
 
-## Getting Started
+**Datenight** is a playful and interactive Truth or Dare web app designed specifically for couples. Whether you're in a long-distance relationship or spending time together in person, Datenight offers fun and customized challenges to make your date night even more exciting.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Personalized Questions:** Tailored truths and dares based on your relationship situation (long-distance or in-person).
+- **Modern UI:** Built with **ShadCN UI** for a sleek and user-friendly interface.
+- **Responsive Design:** Fully optimized for mobile and desktop devices.
+- **Customizable Gameplay:** Choose categories and difficulty levels for your questions and dares.
+- **Animations:** Features beautiful particle or snow effects created using **Canvas** for a cozy, dynamic ambiance.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Tech Stack
 
-## Learn More
+- **Framework:** [Next.js](https://nextjs.org/)
+- **Language:** TypeScript
+- **Database:** [Prisma](https://www.prisma.io/) with PostgreSQL
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **UI Components:** [ShadCN UI](https://shadcn.dev/)
+- **Animations:** Custom effects built with the Canvas API
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Installation and Setup
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/jdbben/dateNight.git
+   cd datenight
 
-## Deploy on Vercel
+ 2.Install dependencies:
+npm install
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3.Set up your environment variables:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Create a .env file in the root directory.
+Add the required variables as defined in the .env.example file.
+4.Run the database migration:
+npx prisma migrate dev
+5.Start the development server:
+The app will be available at http://localhost:3000.
+
+
+Let me know if you'd like to add further details or modify anything!
+
